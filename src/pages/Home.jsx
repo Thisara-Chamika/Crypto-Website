@@ -34,8 +34,8 @@ export const Home = () => {
             crypto.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
             crypto.symbol.toLowerCase().includes(searchQuery.toLowerCase())
         )
-        filtered.sort((a,b) => {
-            switch(sortBy) {
+        filtered.sort((a, b) => {
+            switch (sortBy) {
                 case "name":
                     return a.name.localeCompare(b.name)
                 case "price":
@@ -62,9 +62,9 @@ export const Home = () => {
                         <p>Real-time cryprocurrency prices and market data</p>
                     </div>
                     <div className="search-section">
-                        <input type="text" placeholder="Search cryptos..." className="search-input" 
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        value={searchQuery}
+                        <input type="text" placeholder="Search cryptos..." className="search-input"
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            value={searchQuery}
                         />
                     </div>
                 </div>
@@ -78,15 +78,15 @@ export const Home = () => {
                         <option value="price">Price (Low to High)</option>
                         <option value="price_desc">Price (High to Low)</option>
                         <option value="change">24h Change</option>
-                        <option value="market_cap">Market_cap</option>
+                        <option value="market_cap">Market cap</option>
                     </select>
                 </div>
                 <div className="view-toggle">
-                    <button className={viewMode==="grid" ? "active" : ""} onClick={() => setViewMode("grid")}>Grid</button>
-                    <button className={viewMode==="list" ? "active" : ""} onClick={() => setViewMode("list")}>List</button>
+                    <button className={viewMode === "grid" ? "active" : ""} onClick={() => setViewMode("grid")}>Grid</button>
+                    <button className={viewMode === "list" ? "active" : ""} onClick={() => setViewMode("list")}>List</button>
                 </div>
             </div>
-            
+
             {isLoading ? (
                 <div className="loading">
                     <div className="spinner" />
@@ -95,7 +95,7 @@ export const Home = () => {
             ) : (
                 <div className={`crypto-container ${viewMode}`}>
                     {filteredList.map((crypto, key) => (
-                        <CryptoCard crypto={crypto} key={key}/>
+                        <CryptoCard crypto={crypto} key={key} />
                     ))}
                 </div>
             )}

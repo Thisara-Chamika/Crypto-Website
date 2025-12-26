@@ -117,6 +117,10 @@ body {
   border-color: #add8e6;
   box-shadow: 0 0 0 3px rgba(173, 216, 230, 0.2);
 }
+.filter-group select option {
+  background-color: #010203;
+  color: #fff;
+}
 .view-toggle {
   display: flex;
   gap: 0.5rem;
