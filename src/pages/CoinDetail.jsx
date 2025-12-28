@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router"
 import { fetchChartData, fetchCoinData } from "../api/coinGecko";
 import { useEffect, useState } from "react";
-import { formatPrice } from "../utils/formatter";
+import { formatMarketCap, formatPrice } from "../utils/formatter";
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis, YAxis, Tooltip } from "recharts";
 
 export const CoinDetail = () => {
@@ -149,6 +149,36 @@ export const CoinDetail = () => {
                                 dot={false} />
                         </LineChart>
                     </ResponsiveContainer>
+                </div>
+
+                <div className="stats-grid">
+                    <div className="stat-card">
+                        <span className="stat-label">Market Cap</span>
+                        <span className="stat-value">
+                            ${formatMarketCap(coin.market_data.market_cap.usd)}
+                        </span>
+                    </div>
+
+                    <div className="stat-card">
+                        <span className="stat-label">Volume (24)</span>
+                        <span className="stat-value">
+                            ${formatMarketCap(coin.market_data.total_volume.usd)}
+                        </span>
+                    </div>
+
+                    <div className="stat-card">
+                        <span className="stat-label">Circulating Supply</span>
+                        <span className="stat-value">
+                            {coin.market_data.circulating_supply?.toLocaleString() || "N/A"}
+                        </span>
+                    </div>
+
+                    <div className="stat-card">
+                        <span className="stat-label">Total Supply</span>
+                        <span className="stat-value">
+                            {coin.market_data.total_supply?.toLocaleString() || "N/A"}
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
